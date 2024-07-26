@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Notice Board</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+        width: 90%;
+        max-width: 1200px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+      .left,
+      .right {
+        padding: 20px;
+      }
+      .left {
+        border-right: 1px solid #ccc;
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+   
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #timerDisplay {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+      iframe {
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .meet-link {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+      }
+      .meet-link button {
+        margin-right: 10px;
+      }
+      .meet-link a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .meet-link a:hover {
+        text-decoration: underline;
+      }
+      .iframe-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10px;
+      }
+      .iframe-container iframe {
+        margin-right: 10px;
+      }
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        .left {
+          border-right: none;
+          border-bottom: 1px solid #ccc;
+        }
+        .iframe-container {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .iframe-container iframe {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+      }
+ 
+      .left-panel-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+ 
+
+      #pollList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0;
+      }
+      
+      .poll-item {
+        list-style: none;
+        padding: 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        width: 250px; 
+        height: 150px; 
+        box-sizing: border-box;
+      }
+      
+      .poll-item h3 {
+        margin: 0 0 10px 0; 
+      }
+      
+      .poll-item ul {
+        padding-left: 20px; 
+      }
+      
+      .poll-item li {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+
+        <div class="left-panel-card">
+          <iframe src="https://pomofocus.io/"></iframe>
+
+  
+        </div>
+        <div class="left-panel-card">
+          <h2>Google Keep Notes</h2>
+          <button onclick="window.open('https://keep.google.com/', '_blank')">
+            Open Google Keep
+          </button>
+      
+    </div>
+    <div class="left-panel-card">
+      <h2>Google Meet</h2>
+      <button onclick="window.open('https://meet.google.com/', '_blank')">
+        Open Google Meet
+      </button>
+  
+</div>
+
+     
+
+        <div class="left-panel-card">
+          <h3 class="poll-question">
+            How do you rate the current office environment?
+          </h3>
+          <form id="poll-form" class="poll-form">
+              <label>
+                  <input type="radio"
+                         name="vote"
+                         value="1"> Excellent
+              </label>
+              <label>
+                  <input type="radio"
+                         name="vote"
+                         value="2"> Good
+              </label>
+              <label>
+                <input type="radio"
+                       name="vote"
+                       value="3"> Average
+
+            </label>
+              <button type="submit"
+                      class="vote-button">
+                Vote
+              </button>
+          </form>
+       
+  
+        </div>
+        <div class="left-panel-card">
+          <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfix9IweJ9Hl8C1nUUf3ii3_xGNhhYxBaZLGNvNpfse2FERQA/viewform?usp=sf_link"
+          height="820" ></iframe
+        >
+        </div>
+
+  
+      </div>
+      <div class="right">
+        <h1>Digital Notice Board</h1>
+        <ul id="noticeList"></ul>
+   
+        <h2>Google Slide</h2>
+        <iframe
+          src="https://docs.google.com/presentation/d/1O919nnkObJeBVW1fU8oI6Z7jFFhDf5aw8u7srvuqRN4/edit?usp=sharing"
+          frameborder="0"
+          width="100%"
+          height="399"
+          allowfullscreen="true"
+          padding-botton="40px"
+          padding-botton="40px"
+        ></iframe>
+        <hr />
+        <h2>Google calendar</h2>
+        <iframe
+        src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&ctz=YOUR_TIME_ZONE" 
+        width="100%"
+          height="380"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          ></iframe
+        >
+        <hr />
+     
+        <div class="iframe-container">
+          <h2>Google Sheets</h2>
+          <button
+            onclick="window.open('https://docs.google.com/spreadsheets/d/125f9D_etGP8wIgdBPSmL5rFFcZSihf_Pou2JZkKRENw/edit?gid=1115838130#gid=1115838130', '_blank')"
+          >
+            Open Google Sheets
+          </button>
+        </div>
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/125f9D_etGP8wIgdBPSmL5rFFcZSihf_Pou2JZkKRENw/edit?gid=1115838130#gid=1115838130"
+          frameborder="0"
+          width="100%"
+          height="500"
+          allowfullscreen="true"
+        ></iframe>
+        <hr />
+      </div>
+    </div>
+
+  
+
+    <script src="main.js"></script>
+  </body>
+</html>
